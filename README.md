@@ -64,10 +64,10 @@ check out the [OAuth2 Demo](https://github.com/bshaffer/oauth2-server-demo).
 The quickest way to get started is to use the following schema to create the default database:
 
 ```sql
-CREATE TABLE oauth_clients (client_id TEXT, client_secret TEXT, redirect_uri TEXT);
+CREATE TABLE `oauth_clients` (`client_id` text,`client_secret` text, `client_sig` varchar(255) DEFAULT NULL, `redirect_uri` text);
 CREATE TABLE oauth_access_tokens (access_token TEXT, client_id TEXT, user_id TEXT, expires TIMESTAMP, scope TEXT);
 CREATE TABLE oauth_authorization_codes (authorization_code TEXT, client_id TEXT, user_id TEXT, redirect_uri TEXT, expires TIMESTAMP, scope TEXT);
-CREATE TABLE oauth_users (username TEXT, password TEXT, first_name TEXT, last_name TEXT);
+CREATE TABLE `oauth_users` (`user_id` int(11) unsigned NOT NULL AUTO_INCREMENT, `username` text, `password` text, `first_name` text, `last_name` text, PRIMARY KEY (`user_id`));
 CREATE TABLE oauth_refresh_tokens (refresh_token TEXT, client_id TEXT, user_id TEXT, expires TIMESTAMP, scope TEXT);
 ```
 
